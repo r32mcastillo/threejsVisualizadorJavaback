@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Visualizador de Java</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+
+<!-- CSS --> 
+    <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.min.css">
+
+
+            <!-- codemirror --> 
+    <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">            <!-- main --> 
+    <link rel="stylesheet" href="lib/codemirror/theme/abcdef.css">              <!-- addons theme --> 
+    <link rel="stylesheet" href="lib/codemirror/theme/monokai.css">             <!-- addons theme --> 
+    <link rel="stylesheet" href="lib/codemirror/addon/display/fullscreen.css">  <!-- addons extraKeys --> 
+    <link rel="stylesheet" href="lib/codemirror/addon/hint/show-hint.css">      <!-- addons show-hint --> 
+            <!-- ./codemirror --> 
+
+    <link rel="stylesheet" href="lib/font-awesome-4.6.3/css/font-awesome.min.css">
+   
+
+            <!-- jquery-bonsai --> 
+    <link rel="stylesheet" href="lib/jquery-bonsai/jquery.bonsai.css" />
+            <!-- ./jquery-bonsai --> 
+
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+
+
+
+
+
+<!-- JS --> 
+
+            <!-- jquery --> 
+    <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+    <script src="lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+            <!-- ./jquery --> 
+
+            <!-- codemirror --> 
+    <script src="lib/codemirror/lib/codemirror.js"></script>                    <!-- codemirror --> 
+    <script src="lib/codemirror/mode/clike/clike.js"></script>                  <!-- addons mode:text/x-java --> 
+    <script src="lib/codemirror/addon/edit/matchbrackets.js"></script>          <!-- addons matchBrackets: true --> 
+    <script src="lib/codemirror/addon/edit/closebrackets.js"></script>          <!-- addons autoCloseBrackets: true --> 
+    <script src="lib/codemirror/addon/selection/active-line.js"></script>       <!-- addons styleActiveLine: true --> 
+    <script src="lib/codemirror/addon/selection/mark-selection.js"></script>    <!-- addons styleActiveLine: true --> 
+    <script src="lib/codemirror/addon/display/fullscreen.js"></script>          <!-- addons extraKeys: {} --> 
+    <script src="lib/codemirror/addon/hint/show-hint.js"></script>              <!-- addons show-hint --> 
+            <!-- ./codemirror --> 
+
+
+            <!-- THREE.JS --> 
+    <script src="lib/three-js/build/three.min.js"></script>
+    <script src="lib/three-js/examples/js/libs/stats.min.js"></script> 
+    <script src="lib/three-js/examples/js/controls/OrbitControls.js"></script>  
+    <script src="lib/three-js/examples/js/utils/GeometryUtils.js"></script>         
+            <!-- ./THREE.JS --> 
+
+            <!-- Tween.JS --> 
+    <script src="lib/tween/Tween.js"></script>
+            <!-- ./Tween.JS --> 
+
+            <!-- data.gui --> 
+    <script src="lib/data.gui/dat.gui.js"></script> 
+            <!-- data.gui --> 
+
+
+    <script src="js/helpers.js"></script>
+    <script src="js/controles.js"></script>
+
+    <script src="js/editor_texto/codigos_de_ejemplo.js"></script>
+    <script src="js/editor_texto/analisis_lexico/tabla_de_simbolos.js"></script>
+    <script src="js/editor_texto/analisis_lexico/setup_javaEditor.js"></script>
+    <script src="js/editor_texto/analisis_sintactico/reglas_produccion.js"></script>
+    <script src="js/editor_texto/analisis_sintactico/analisis_sintactico.js"></script>
+
+    
+    <script src="js/dibujando/R01/models/Element.js"></script>
+    <script src="js/dibujando/R01/models/Libreria.js"></script>
+    <script src="js/dibujando/R01/models/Metodo.js"></script>
+    <script src="js/dibujando/R01/models/MetodoMain.js"></script>
+    <script src="js/dibujando/R01/models/Variable.js"></script>
+    <script src="js/dibujando/R01/models/VariablePorParametro.js"></script>    
+    <script src="js/dibujando/R01/models/Arreglo.js"></script>
+    <script src="js/dibujando/R01/models/CIf.js"></script>
+    <script src="js/dibujando/R01/models/CElse.js"></script>
+    <script src="js/dibujando/R01/models/CFor.js"></script>
+    <script src="js/dibujando/R01/models/CWhile.js"></script>
+    <script src="js/dibujando/R01/Config.js"></script>
+    <script src="js/dibujando/R01/Utileria.js"></script>
+    <script src="js/dibujando/R01/MyThreeJS.js"></script>
+    <script src="js/dibujando/R01/R01.js"></script>
+
+
+
+    
+            <!-- jquery-bonsai --> 
+    <script src="lib/jquery-bonsai/jquery.bonsai.js"></script>
+            <!-- ./jquery-bonsai --> 
+
+</head>
+<body>
+
+    <div id="editor"><textarea name="javaEditor" id="javaEditor" style="display: none;"></textarea></div>
+    <div id="representacion_3D"></div>
+    
+
+
+    <div id="detalles">
+        <!-- Manija para redimencionar el div de detalles -->
+        <div id="handle" class="ui-resizable-handle ui-resizable-n"></div>
+
+        <div id="detalles-tabs">
+            <ul id="detalles-menu">
+                <li><a href="#tabs-0">^_^</a></li>
+                <li><a href="#tabs-1">Arbol Sintactico</a></li>
+                <li><a href="#tabs-2">Arbol de llamadas</a></li>
+                <li><a href="#tabs-3">dev</a></li>
+            </ul>
+            <div id="detalles-content">
+                <div id="tabs-0" style="text-align: center;">
+                    <pre>
+                       /**************************************************************\                       
+                        *                            \\|//                           *                        
+                        *                            (O O)                           *                        
+                        *            +----------oOO---------------------+            *                        
+                        *            | Desarrollado por Miguel Castillo |            *                        
+                        *            +-------------------oOO------------+            *                        
+                        *                          |__|__|                           *                        
+                        *                           || ||                            *                        
+                        *                         ooO Ooo                            *                        
+                       \**************************************************************/                       
+                    </pre>
+                </div>                
+                <div id="tabs-1" >
+                    <div style="width: 50%; float: left;">
+                        <div id="representacion_arbolSintactico"></div>                        
+                    </div>
+                    <div style="width: 50%; float: left;">                        
+                        <div id="infonodo_as"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div id="tabs-2" >
+                    <div id="representacion_arbolDeLlamadas"></div>
+                </div>
+                <div id="tabs-3" >
+                    <div style="width: 50%; float: left;">
+                        <div id="representacionarreglo2"></div>                     
+                    </div>
+                    <div style="width: 50%; float: left;">  
+                        <div id="representacionarreglo1"></div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+            </div>
+        </div><!-- ./ #detalles-tabs -->
+    </div><!-- id="detalles" -->
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Visualizador de Java</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+
+<!-- CSS --> 
+    <link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.min.css">
+
+
+            <!-- codemirror --> 
+    <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">            <!-- main --> 
+    <link rel="stylesheet" href="lib/codemirror/theme/abcdef.css">              <!-- addons theme --> 
+    <link rel="stylesheet" href="lib/codemirror/theme/monokai.css">             <!-- addons theme --> 
+    <link rel="stylesheet" href="lib/codemirror/addon/display/fullscreen.css">  <!-- addons extraKeys --> 
+    <link rel="stylesheet" href="lib/codemirror/addon/hint/show-hint.css">      <!-- addons show-hint --> 
+
+    <link rel="stylesheet" href="lib/codemirror/addon/fold/foldgutter.css" />
+            <!-- ./codemirror --> 
+
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+   
+
+            <!-- jquery-bonsai --> 
+    <!--<link rel="stylesheet" href="lib/jquery-bonsai/jquery.bonsai.css" />-->
+            <!-- ./jquery-bonsai --> 
+
+
+    <link rel="stylesheet" href="css/estilos.css">
+<!-- ./CSS --> 
+
+
+
+
+
+<!-- JS --> 
+
+            <!-- jquery --> 
+    <script src="lib/jquery/jquery-3.1.1.min.js"></script>
+    <script src="lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+            <!-- ./jquery --> 
+
+            <!-- codemirror --> 
+    <script src="lib/codemirror/lib/codemirror.js"></script>                    <!-- codemirror --> 
+    <script src="lib/codemirror/mode/clike/clike.js"></script>                  <!-- addons mode:text/x-java -->
+    <!--<script src="lib/codemirror/mode/javascript/javascript.js"></script>-->        <!-- addons mode:text/x-java --> 
+    <script src="lib/codemirror/addon/edit/matchbrackets.js"></script>          <!-- addons matchBrackets: true --> 
+    <script src="lib/codemirror/addon/edit/closebrackets.js"></script>          <!-- addons autoCloseBrackets: true --> 
+    <script src="lib/codemirror/addon/selection/active-line.js"></script>       <!-- addons styleActiveLine: true --> 
+    <script src="lib/codemirror/addon/selection/mark-selection.js"></script>    <!-- addons styleActiveLine: true --> 
+    <script src="lib/codemirror/addon/display/fullscreen.js"></script>          <!-- addons extraKeys: {} --> 
+    <script src="lib/codemirror/addon/hint/show-hint.js"></script>              <!-- addons show-hint --> 
+
+    <script src="lib/codemirror/addon/fold/foldcode.js"></script>
+    <script src="lib/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="lib/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="lib/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="lib/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="lib/codemirror/addon/fold/markdown-fold.js"></script>
+    <script src="lib/codemirror/addon/fold/comment-fold.js"></script>
+            <!-- ./codemirror --> 
+
+
+            <!-- THREE.JS --> 
+    <script src="lib/three-js/build/three.min.js"></script>
+    <script src="lib/three-js/examples/js/libs/stats.min.js"></script> 
+    <script src="lib/three-js/examples/js/controls/OrbitControls.js"></script>  
+    <script src="lib/three-js/examples/js/utils/GeometryUtils.js"></script>         
+            <!-- ./THREE.JS --> 
+
+            <!-- Tween.JS --> 
+    <script src="lib/tween/Tween.js"></script>
+            <!-- ./Tween.JS --> 
+
+            <!-- dat.gui --> 
+    <script src="lib/dat.gui/dat.gui.js"></script> 
+            <!-- dat.gui --> 
+
+            <!-- JavaParser --> 
+    <script src="lib/javaparser/JavaParser.js"></script> 
+            <!-- JavaParser --> 
+
+            <!-- jsDump --> 
+    <script src="lib/jsDump/jsDump.js"></script> 
+            <!-- ./jsDump --> 
+            <!-- D3 --> 
+    <script src="lib/D3/d3.min.js"></script> 
+            <!-- ./D3 --> 
+
+    <script src="js/helpers.js"></script>
+    <script src="js/controles.js"></script>
+
+    <script src="js/editor_texto/Editor.js"></script>
+    <script src="js/editor_texto/codigos_de_ejemplo.js"></script>
+    <script src="js/editor_texto/analisis_sintactico.js"></script>
+
+    
+    <script src="js/dibujando/R01/models/Element.js"></script>
+    <script src="js/dibujando/R01/models/Libreria.js"></script>
+    <script src="js/dibujando/R01/models/Metodo.js"></script>
+    <script src="js/dibujando/R01/models/MetodoMain.js"></script>
+    <script src="js/dibujando/R01/models/Variable.js"></script>
+    <script src="js/dibujando/R01/models/VariablePorParametro.js"></script>    
+    <script src="js/dibujando/R01/models/Arreglo.js"></script>
+    <script src="js/dibujando/R01/models/CIf.js"></script>
+    <script src="js/dibujando/R01/models/CElse.js"></script>
+    <script src="js/dibujando/R01/models/CFor.js"></script>
+    <script src="js/dibujando/R01/models/CWhile.js"></script>
+    <script src="js/dibujando/R01/Config.js"></script>
+    <script src="js/dibujando/R01/Utileria.js"></script>
+    <script src="js/dibujando/R01/MyThreeJS.js"></script>
+    <script src="js/dibujando/R01/R01.js"></script>
+
+
+
+    
+            <!-- jquery-bonsai --> 
+    <!--<script src="lib/jquery-bonsai/jquery.bonsai.js"></script>-->
+            <!-- ./jquery-bonsai --> 
+    <!--<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.js"></script>--> 
+    <script src="js/main.js"></script>
+
+
+</head>
+<body>
+    
+    <div id="editor">
+        <textarea name="javaEditor" id="javaEditor" style="display: none;"></textarea><!-- <<#5>> -->
+    </div>
+
+    <div id="representacion_3D"></div>
+    
+   <!-- -->
+    <div class="cuadro">
+        <div class="cuadro-header">Árbol sintáctico<i class="btn-cerrar fa fa-times" aria-hidden="true"></i></div>
+        <div class="cuadro-body">
+            <textarea name="arbol_sintactico" id="arbol_sintactico" style="display: none;"></textarea><!-- <<#5>> -->
+        </div>
+    </div>
+
+
+
+
+
+    <div class="cuadro">
+        <div class="cuadro-header">Dendrogram sintáctico <i class="btn-cerrar fa fa-times" aria-hidden="true"></i></div>
+        <div class="cuadro-body" id="dendrograma">
+        </div>
+    </div>
+
+    <div class="cuadro">
+        <div class="cuadro-header">Árbol sintáctico2<i class="btn-cerrar fa fa-times" aria-hidden="true"></i></div>
+        <div class="cuadro-body">
+            <textarea name="arbol_sintactico2" id="arbol_sintactico2" style="display: none;"></textarea><!-- <<#5>> -->
+        </div>
+    </div>
+
+    
+</body>
+</html>
